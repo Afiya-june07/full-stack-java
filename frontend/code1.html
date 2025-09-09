@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Unique HTML Tags Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header, footer {
+      background: linear-gradient(90deg, #005bea, #00c6fb);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 1.5rem;
+    }
+    section {
+      margin-bottom: 2rem;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+    }
+    figure img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1rem 0;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 0.5rem;
+      text-align: center;
+    }
+    fieldset {
+      border: 2px solid #005bea;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    button, input[type="submit"] {
+      background: #005bea;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    button:hover, input[type="submit"]:hover {
+      background: #003e8a;
+    }
+    details {
+      margin-top: 1rem;
+    }
+    aside {
+      background: #e0f7fa;
+      padding: 1rem;
+      border-left: 4px solid #00acc1;
+    }
+  </style>
+  <script>
+    function showAlert() {
+      alert("✨ Hello from JavaScript!");
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Unique HTML Elements Showcase</h1>
+    <nav>
+      <ul>
+        <li><a href="#section1">Content</a></li>
+        <li><a href="#section2">Extras</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="section1">
+      <h2>Text & Media</h2>
+      <article>
+        <h3>Formatted Content</h3>
+        <p>This is a <strong>paragraph</strong> with <em>emphasis</em>, <mark>highlight</mark>, 
+           <u>underline</u>, <s>strikethrough</s>, <small>small</small>, H<sub>2</sub>O, and x<sup>2</sup>.</p>
+        
+        <blockquote cite="https://example.com">
+          “This is a styled blockquote.”
+        </blockquote>
+        
+        <pre>
+function hello() {
+    console.log("Hello World");
+}
+        </pre>
+        <code>console.log("Inline code");</code>
+        
+        <hr>
+        <ul><li>Unordered item</li></ul>
+        <ol><li>Ordered item</li></ol>
+        <dl>
+          <dt>HTML</dt>
+          <dd>HyperText Markup Language</dd>
+        </dl>
+
+        <figure>
+          <img src="https://via.placeholder.com/200" alt="Placeholder">
+          <figcaption>Sample Image with Caption</figcaption>
+        </figure>
+
+        <table>
+          <caption>Sample Table</caption>
+          <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
+          <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
+          <tfoot><tr><td colspan="2">Table Footer</td></tr></tfoot>
+        </table>
+      </article>
+    </section>
+
+    <section>
+      <h2>Forms</h2>
+      <form>
+        <fieldset>
+          <legend>User Form</legend>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name"><br><br>
+          
+          <label><input type="checkbox" name="subscribe"> Subscribe</label><br>
+          <label><input type="radio" name="gender" value="male"> Male</label>
+          <label><input type="radio" name="gender" value="female"> Female</label><br>
+          
+          <label for="country">Country:</label>
+          <select name="country" id="country">
+            <option>USA</option>
+            <option>UK</option>
+            <option>India</option>
+          </select><br><br>
+          
+          <textarea name="comments" placeholder="Enter comments"></textarea><br>
+          
+          <button type="button" onclick="showAlert()">Click Me</button>
+          <input type="submit" value="Submit">
+        </fieldset>
+      </form>
+    </section>
+
+    <section id="section2">
+      <h2>Miscellaneous Elements</h2>
+      <details>
+        <summary>Expand for more</summary>
+        <p>Hidden details go here.</p>
+      </details>
+      <p>
+        Progress: <progress value="70" max="100"></progress><br>
+        Meter: <meter value="0.8">80%</meter><br>
+        Time: <time datetime="2025-09-08">Sept 8, 2025</time><br>
+        Abbreviation: <abbr title="Cascading Style Sheets">CSS</abbr><br>
+        <address>123 Web Street, Internet City</address><br>
+        <bdo dir="rtl">Right-to-left text</bdo>
+      </p>
+      <aside>
+        <p>This is an aside note with extra info.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Unique HTML Demo</p>
+  </footer>
+</body>
+</html>

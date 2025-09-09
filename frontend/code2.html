@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EM Biodata</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2 {
+      color: #005bea;
+    }
+    img {
+      width: 150px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #005bea;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+    form {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input[type="submit"] {
+      background: #005bea;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    input[type="submit"]:hover {
+      background: #003e8a;
+    }
+  </style>
+</head>
+<body>
+  <h1>EM Biodata</h1>
+  <img src="../resources/Screenshot 2025-09-07 111013.png" alt="EM Photo">
+
+  <h2>Personal Information</h2>
+  <ul>
+    <li><strong>Name:</strong> EM</li>
+    <li><strong>Age:</strong> 25</li>
+    <li><strong>Location:</strong> Lagos, Nigeria</li>
+  </ul>
+
+  <h2>Education</h2>
+  <ol>
+    <li>B.Sc. Computer Science</li>
+    <li>M.Sc. Software Engineering</li>
+  </ol>
+
+  <h2>About Me</h2>
+  <p>
+    EM is a passionate software developer with experience in web and mobile application development.
+  </p>
+
+  <h2>Skills</h2>
+  <table>
+    <tr>
+      <th>Skill</th>
+      <th>Proficiency</th>
+      <th>Remarks</th>
+    </tr>
+    <tr>
+      <td>JavaScript</td>
+      <td>Beginner</td>
+      <td>Learning actively</td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td>Advanced</td>
+      <td>Problem Solver</td>
+    </tr>
+    <tr>
+      <td>HTML/CSS</td>
+      <td>Beginner</td>
+      <td>Vibe Coder</td>
+    </tr>
+  </table>
+
+  <form>
+    <h2>Contact Me</h2>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="4" required></textarea><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
+ 

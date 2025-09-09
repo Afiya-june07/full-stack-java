@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Elements Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #1a1a1a;
+      color: #f0f0f0;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background: #333;
+      padding: 1rem;
+      text-align: center;
+    }
+    header h1, footer p {
+      margin: 0;
+      color: #ffcc00;
+    }
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0;
+      list-style: none;
+    }
+    nav a {
+      color: #ffcc00;
+      text-decoration: none;
+    }
+    main {
+      padding: 1.5rem;
+    }
+    section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #444;
+      border-radius: 8px;
+      background: #222;
+    }
+    figure {
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    table, th, td {
+      border: 1px solid #555;
+    }
+    th, td {
+      padding: 0.5rem;
+      text-align: center;
+    }
+    fieldset {
+      border: 1px solid #555;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    button, input[type="submit"] {
+      background: #ffcc00;
+      color: #000;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    button:hover, input[type="submit"]:hover {
+      background: #ffaa00;
+    }
+  </style>
+  <script>
+    function greet() {
+      alert("🚀 You triggered JavaScript!");
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>HTML Elements Showcase</h1>
+    <nav>
+      <ul>
+        <li><a href="#text">Text</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#forms">Forms</a></li>
+        <li><a href="#misc">Misc</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Text Elements -->
+    <section id="text">
+      <h2>Text & Content</h2>
+      <p>
+        This is <strong>strong</strong>, <em>emphasis</em>,
+        <mark>highlighted</mark>, <small>small text</small>,
+        <u>underlined</u>, <s>strikethrough</s>,
+        <i>italic</i>, and <b>bold</b>.
+      </p>
+      <p>Mathematics: H<sub>2</sub>O, E = mc<sup>2</sup></p>
+      <blockquote cite="https://developer.mozilla.org">
+        “Learning HTML is the first step to mastering the Web.”
+      </blockquote>
+      <pre>
+function sample() {
+    console.log("Code block example");
+}
+      </pre>
+      <code>console.log("inline code");</code>
+      <hr>
+      <ul>
+        <li>Unordered item</li>
+        <li>Another item</li>
+      </ul>
+      <ol>
+        <li>First</li>
+        <li>Second</li>
+      </ol>
+      <dl>
+        <dt>HTML</dt>
+        <dd>HyperText Markup Language</dd>
+      </dl>
+    </section>
+
+    <!-- Media Elements -->
+    <section id="media">
+      <h2>Media & Tables</h2>
+      <figure>
+        <img src="https://via.placeholder.com/250" alt="Placeholder demo">
+        <figcaption>Figure with caption</figcaption>
+      </figure>
+      <table>
+        <caption>Sample Table</caption>
+        <thead>
+          <tr><th>Header A</th><th>Header B</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Row 1</td><td>Data</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td colspan="2">Footer note</td></tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <!-- Forms -->
+    <section id="forms">
+      <h2>Form Controls</h2>
+      <form>
+        <fieldset>
+          <legend>User Info</legend>
+          <label>Name: <input type="text" name="username"></label><br>
+          <label><input type="checkbox" name="news"> Subscribe</label><br>
+          <label><input type="radio" name="gender" value="m"> Male</label>
+          <label><input type="radio" name="gender" value="f"> Female</label><br>
+          <label>Country:
+            <select>
+              <option>India</option>
+              <option>USA</option>
+            </select>
+          </label><br>
+          <textarea placeholder="Comments"></textarea><br>
+          <button type="button" onclick="greet()">Try JavaScript</button>
+          <input type="submit" value="Submit Form">
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Miscellaneous -->
+    <section id="misc">
+      <h2>Miscellaneous Elements</h2>
+      <details>
+        <summary>Click for details</summary>
+        <p>This text is hidden until expanded.</p>
+      </details>
+      <p>
+        Progress: <progress value="75" max="100"></progress><br>
+        Meter: <meter value="0.8">80%</meter><br>
+        Time: <time datetime="2025-09-08">September 8, 2025</time><br>
+        Abbreviation: <abbr title="Cascading Style Sheets">CSS</abbr><br>
+        <address>42 Web Lane, Internet City</address><br>
+        <bdo dir="rtl">Reversed text</bdo>
+      </p>
+      <span>Generic <span style="color:#ffcc00;">span element</span></span>
+      <aside>
+        <p>This is an aside block for extra notes.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 HTML Reference Demo</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G Afiya | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --accent: #ff6584;
+      --bg: #f8f9fc;
+      --card-bg: #fff;
+      --text: #333;
+      --shadow: 0 6px 24px rgba(0,0,0,0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      text-align: center;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
+      position: relative;
+    }
+    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    header p { font-size: 1.1rem; font-weight: 500; }
+
+    /* Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #fff;
+      padding: 0.3rem 0.5rem;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    nav a:hover { background: rgba(255,255,255,0.2); }
+
+    .container { max-width: 1000px; margin: 3rem auto; padding: 0 1rem; }
+
+    /* Section Titles */
+    h2 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+    h2:hover::after { width: 100px; }
+
+    /* About & Timeline */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      animation: fadeInUp 1.5s ease;
+    }
+    .about img {
+      width: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+    }
+    .timeline {
+      margin-top: 1rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--primary);
+    }
+    .timeline div {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .timeline div::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+    }
+
+    /* Skills */
+    .skills { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin: 2rem 0; }
+    .skill {
+      background: var(--card-bg);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      transition: 0.3s;
+    }
+    .skill:hover { transform: translateY(-5px); box-shadow: 0 8px 32px rgba(108,99,255,0.3); }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .project-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 32px rgba(108,99,255,0.3); }
+    .project-card::after {
+      content: attr(data-title);
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 0.8rem;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+    .project-card:hover::after { transform: translateY(0); }
+
+    /* Contact */
+    .contact form {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .contact input, .contact textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.7rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .contact button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact button:hover { background: var(--accent); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--primary);
+      color: #fff;
+      margin-top: 2rem;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .about { flex-direction: column; text-align: center; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>G Afiya</h1>
+    <p>AI & ML Enthusiast | Future Businesswoman</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- About & Timeline -->
+    <section id="about" class="about">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="G Afiya">
+      <div>
+        <h2>About Me</h2>
+        <p>Hi 👋 I’m <b>G Afiya</b>, B.Tech 3rd year in CSM (AI & ML) with a Diploma in AI & ML. Completed internships in Data Science & AWS. Skilled in Java & MERN Full Stack Development. Aspiring real-world businesswoman 🚀.</p>
+        <div class="timeline">
+          <div><h4>Diploma in AI & ML</h4></div>
+          <div><h4>B.Tech in CSM (3rd Year)</h4></div>
+          <div><h4>Data Science Internship</h4></div>
+          <div><h4>AWS Internship</h4></div>
+          <div><h4>Java & MERN Development</h4></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill">Python / AI & ML</div>
+        <div class="skill">Data Science & AWS</div>
+        <div class="skill">Java / MERN Stack</div>
+        <div class="skill">UI/UX & Business Vision</div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project-card" data-title="E-Commerce Website (MERN)">
+          <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80" alt="Project 1">
+        </div>
+        <div class="project-card" data-title="AI Chatbot (NLP)">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Project 2">
+        </div>
+        <div class="project-card" data-title="Weather Dashboard (AWS)">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Project 3">
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div style="text-align:center; margin-top:1rem;">
+        <p>📧 gowlaafiya@gmail.com</p>
+        <p>📱 7013742874</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2024 G Afiya | Built with 💜 AI, ML & Passion
+  </footer>
+</body>
+</html>
+
