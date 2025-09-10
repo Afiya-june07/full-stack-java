@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" type="image/png" href="icon.png">
+
+  <style>
+    /* Body & Background */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Form Container */
+    .form-container {
+      width: 90%;
+      max-width: 550px;
+      background: #fff;
+      padding: 30px 35px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2575fc;
+      font-size: 28px;
+    }
+
+    /* Form Grid */
+    form {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      grid-gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      align-self: center;
+      color: #333;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      border-color: #2575fc;
+      outline: none;
+      box-shadow: 0 0 5px rgba(37,117,252,0.4);
+    }
+
+    .gender-options {
+      grid-column: span 2;
+      display: flex;
+      gap: 15px;
+    }
+
+    .gender-options label {
+      font-weight: normal;
+      color: #444;
+    }
+
+    /* Button */
+    button {
+      grid-column: span 2;
+      padding: 12px;
+      background: #2575fc;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #1a5fd0;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 600px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+      .gender-options {
+        flex-direction: column;
+      }
+      button {
+        grid-column: span 1;
+      }
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Success message */
+    .success-message {
+      display: none;
+      text-align: center;
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="course">Course Selection</label>
+      <select id="course" name="course" required>
+        <option value="">-- Select a course --</option>
+        <option value="AI">Artificial Intelligence</option>
+        <option value="DS">Data Science</option>
+        <option value="WD">Web Development</option>
+      </select>
+
+      <label>Gender</label>
+      <div class="gender-options">
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female" required> Female</label>
+        <label><input type="radio" name="gender" value="Other" required> Other</label>
+      </div>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <label for="confirm">Confirm Password</label>
+      <input type="password" id="confirm" name="confirm" required>
+
+      <button type="submit">Register</button>
+    </form>
+    <div class="success-message" id="successMessage">✅ Registration Successful!</div>
+  </div>
+
+  <script>
+    const form = document.getElementById("registrationForm");
+    const password = document.getElementById("password");
+    const confirm = document.getElementById("confirm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent actual form submission
+
+      // Password match validation
+      if(password.value !== confirm.value){
+        alert("❌ Passwords do not match!");
+        return;
+      }
+
+      // Display success message
+      successMessage.style.display = "block";
+
+      // Optional: reset form after submission
+      form.reset();
+    });
+  </script>
+</body>
+</html>

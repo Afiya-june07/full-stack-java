@@ -2,196 +2,276 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Unique HTML Tags Showcase</title>
+  <title>Explorer’s Journal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: "Segoe UI", sans-serif;
-      background: #f7f7f7;
       margin: 0;
-      padding: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f0f5f9;
       color: #333;
     }
-    header, footer {
-      background: linear-gradient(90deg, #005bea, #00c6fb);
+
+    header {
+      background: #1e88e5;
       color: white;
-      padding: 1rem;
-      text-align: center;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
     }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      padding: 0;
+      gap: 20px;
       margin: 0;
+      padding: 0;
     }
+
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      transition: opacity 0.3s;
     }
+    nav a:hover { opacity: 0.7; }
+
     main {
-      max-width: 900px;
+      padding: 20px;
+      max-width: 1000px;
       margin: auto;
-      padding: 1.5rem;
     }
+
     section {
-      margin-bottom: 2rem;
+      margin-bottom: 40px;
+      padding: 20px;
       background: white;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
-    figure img {
-      max-width: 100%;
-      border-radius: 8px;
+
+    h2 { color: #1e88e5; }
+
+    /* Gallery Grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
     }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 1rem 0;
-    }
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-    th, td {
-      padding: 0.5rem;
+
+    .gallery figure {
+      margin: 0;
       text-align: center;
     }
-    fieldset {
-      border: 2px solid #005bea;
+
+    .gallery img {
+      width: 100%;
+      height: auto;
       border-radius: 8px;
-      padding: 1rem;
     }
-    button, input[type="submit"] {
-      background: #005bea;
+
+    table {
+      border-collapse: collapse;
+      margin: 20px 0;
+      width: 100%;
+    }
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    table caption {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+      max-width: 400px;
+    }
+
+    input, select, textarea, button {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background: #1e88e5;
       color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
       cursor: pointer;
-      margin-top: 0.5rem;
+      border: none;
     }
-    button:hover, input[type="submit"]:hover {
-      background: #003e8a;
+    button:hover { background: #1565c0; }
+
+    footer {
+      text-align: center;
+      background: #333;
+      color: white;
+      padding: 15px;
+      margin-top: 40px;
     }
-    details {
-      margin-top: 1rem;
-    }
-    aside {
-      background: #e0f7fa;
-      padding: 1rem;
-      border-left: 4px solid #00acc1;
+
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
   <script>
-    function showAlert() {
-      alert("✨ Hello from JavaScript!");
+    function greet() {
+      alert("Thanks for joining the Explorer’s Journal!");
     }
   </script>
 </head>
 <body>
+
   <header>
-    <h1>Unique HTML Elements Showcase</h1>
+    <h1>Explorer’s Journal</h1>
     <nav>
       <ul>
-        <li><a href="#section1">Content</a></li>
-        <li><a href="#section2">Extras</a></li>
+        <li><a href="#stories">Stories</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#join">Join</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section id="section1">
-      <h2>Text & Media</h2>
+    <!-- Travel Stories -->
+    <section id="stories">
+      <h2>Adventure Stories</h2>
       <article>
-        <h3>Formatted Content</h3>
-        <p>This is a <strong>paragraph</strong> with <em>emphasis</em>, <mark>highlight</mark>, 
-           <u>underline</u>, <s>strikethrough</s>, <small>small</small>, H<sub>2</sub>O, and x<sup>2</sup>.</p>
-        
-        <blockquote cite="https://example.com">
-          “This is a styled blockquote.”
+        <h3>A Journey to the Mountains</h3>
+        <p>
+          Last summer, I hiked the <strong>Himalayan trails</strong>. The air was thin, 
+          but the <em>peace and silence</em> of the mountains were unforgettable.  
+          My guide said, <q>“Climbing teaches patience more than strength.”</q>
+        </p>
+
+        <blockquote cite="https://travelquotes.com">
+          “The journey of a thousand miles begins with a single step.” – Lao Tzu
         </blockquote>
-        
+
         <pre>
-function hello() {
-    console.log("Hello World");
+function packBackpack() {
+  console.log("Map, Water, Food, Jacket");
 }
         </pre>
-        <code>console.log("Inline code");</code>
-        
-        <hr>
-        <ul><li>Unordered item</li></ul>
-        <ol><li>Ordered item</li></ol>
-        <dl>
-          <dt>HTML</dt>
-          <dd>HyperText Markup Language</dd>
-        </dl>
-
-        <figure>
-          <img src="https://via.placeholder.com/200" alt="Placeholder">
-          <figcaption>Sample Image with Caption</figcaption>
-        </figure>
-
-        <table>
-          <caption>Sample Table</caption>
-          <thead><tr><th>Header 1</th><th>Header 2</th></tr></thead>
-          <tbody><tr><td>Cell 1</td><td>Cell 2</td></tr></tbody>
-          <tfoot><tr><td colspan="2">Table Footer</td></tr></tfoot>
-        </table>
+        <code>console.log("Adventure begins");</code>
       </article>
     </section>
 
-    <section>
-      <h2>Forms</h2>
-      <form>
-        <fieldset>
-          <legend>User Form</legend>
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name"><br><br>
-          
-          <label><input type="checkbox" name="subscribe"> Subscribe</label><br>
-          <label><input type="radio" name="gender" value="male"> Male</label>
-          <label><input type="radio" name="gender" value="female"> Female</label><br>
-          
-          <label for="country">Country:</label>
-          <select name="country" id="country">
-            <option>USA</option>
-            <option>UK</option>
-            <option>India</option>
-          </select><br><br>
-          
-          <textarea name="comments" placeholder="Enter comments"></textarea><br>
-          
-          <button type="button" onclick="showAlert()">Click Me</button>
-          <input type="submit" value="Submit">
-        </fieldset>
-      </form>
+    <!-- Gallery -->
+    <section id="gallery">
+      <h2>Travel Gallery</h2>
+      <div class="gallery">
+        <figure>
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="Snowy mountains at sunrise">
+          <figcaption>Snowy mountains at sunrise</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Desert dunes at sunset">
+          <figcaption>Desert dunes at sunset</figcaption>
+        </figure>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600&q=80" alt="Forest trail adventure">
+          <figcaption>Forest trail adventure</figcaption>
+        </figure>
+      </div>
+
+      <ul>
+        <li>Essential gear: Boots</li>
+        <li>Essential gear: Compass</li>
+      </ul>
+      <ol>
+        <li>Step 1: Pack your bag</li>
+        <li>Step 2: Choose your route</li>
+      </ol>
+      <dl>
+        <dt>Backpacking</dt>
+        <dd>Carrying essentials on long hikes.</dd>
+      </dl>
+
+      <table>
+        <caption>Upcoming Expeditions</caption>
+        <thead>
+          <tr>
+            <th>Destination</th>
+            <th>Month</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Andes</td>
+            <td>October</td>
+          </tr>
+          <tr>
+            <td>Sahara</td>
+            <td>December</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">Plan early, travel safe!</td>
+          </tr>
+        </tfoot>
+      </table>
     </section>
 
-    <section id="section2">
-      <h2>Miscellaneous Elements</h2>
+    <!-- Join Form -->
+    <section id="join">
+      <h2>Join the Explorer’s Club</h2>
+      <form>
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname">
+
+        <label><input type="checkbox" name="newsletter"> Subscribe to travel newsletter</label>
+
+        <label><input type="radio" name="role" value="traveler"> Traveler</label>
+        <label><input type="radio" name="role" value="guide"> Guide</label>
+
+        <select name="continent">
+          <option value="asia">Asia</option>
+          <option value="africa">Africa</option>
+        </select>
+
+        <textarea name="story" placeholder="Share your travel story..."></textarea>
+
+        <button type="button" onclick="greet()">Say Hi</button>
+        <input type="submit" value="Submit">
+      </form>
+
       <details>
-        <summary>Expand for more</summary>
-        <p>Hidden details go here.</p>
+        <summary>Membership Benefits</summary>
+        <p>Members get access to hidden trails and exclusive guides.</p>
       </details>
-      <p>
-        Progress: <progress value="70" max="100"></progress><br>
-        Meter: <meter value="0.8">80%</meter><br>
-        Time: <time datetime="2025-09-08">Sept 8, 2025</time><br>
-        Abbreviation: <abbr title="Cascading Style Sheets">CSS</abbr><br>
-        <address>123 Web Street, Internet City</address><br>
-        <bdo dir="rtl">Right-to-left text</bdo>
-      </p>
-      <aside>
-        <p>This is an aside note with extra info.</p>
-      </aside>
+
+      <progress value="40" max="100"></progress>
+      <meter value="0.7">70%</meter>
+      <time datetime="2025-09-10">September 10, 2025</time>
+
+      <address>
+        Explorer’s HQ, 456 Adventure Rd, Wanderland
+      </address>
+      <bdo dir="rtl">Travel the World</bdo>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Unique HTML Demo</p>
+    <p>&copy; 2025 Explorer’s Journal | Keep Exploring 🌍</p>
   </footer>
+
 </body>
 </html>
+
