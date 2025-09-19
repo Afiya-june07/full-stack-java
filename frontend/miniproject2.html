@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> To-Do List</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .container {
+    width: 600px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  }
+
+  h2 { text-align: center; margin-bottom: 20px; }
+
+  .top-inputs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+  }
+
+  input[type="text"] {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+  }
+
+  select {
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #6c5ce7;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  button:hover { transform: scale(1.05); }
+
+  .progress-bar {
+    height: 18px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #00b894;
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    line-height: 18px;
+    transition: width 0.4s ease;
+  }
+
+  .task-list, .completed-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .task-card {
+    background: #f1f1f1;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    perspective: 1000px;
+  }
+
+  .task-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    border-radius: 12px;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+
+  .task-card.done .task-inner {
+    transform: rotateY(180deg);
+  }
+
+  .task-front, .task-back {
+    position: absolute;
+    backface-visibility: hidden;
+    width: 100%;
+  }
+
+  .task-front {
+    font-weight: bold;
+  }
+
+  .task-back {
+    transform: rotateY(180deg);
+    text-align: center;
+    font-size: 14px;
+    color: #222;
+  }
+
+  .priority-high { background: #ff7675; color: white; }
+  .priority-medium { background: #fab43a; color: white; }
+  .priority-low { background: #55efc4; color: #222; }
+
+  .deleteBtn {
+    margin-left: 10px;
+    background: #d63031;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>To-Do List</h2>
+  <div class="top-inputs">
+    <input type="text" id="taskInput" placeholder="Enter task...">
+    <select id="priority">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
+    <button id="addTaskBtn">Add</button>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill">0%</div>
+  </div>
+  
+  <h3>🕒 Pending</h3>
+  <ul id="taskList" class="task-list"></ul>
+
+  <h3>✅ Completed</h3>
+  <ul id="completedList" class="completed-list"></ul>
+</div>
+
+<script>
+$(document).ready(function(){
+
+  let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  function updateLocalStorage() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
+
+  function updateProgress() {
+    let total = tasks.length;
+    let done = tasks.filter(t => t.done).length;
+    let percent = total ? Math.round((done/total)*100) : 0;
+    $(".progress-fill").css("width", percent + "%").text(percent + "%");
+  }
+
+  function renderTasks() {
+    $("#taskList").empty();
+    $("#completedList").empty();
+
+    tasks.forEach((task, index) => {
+      let li = $('<li class="task-card"></li>');
+      li.toggleClass("done", task.done);
+
+      let priorityClass = task.priority === "high" ? "priority-high" :
+                          task.priority === "medium" ? "priority-medium" :
+                          "priority-low";
+
+      let inner = $('<div class="task-inner '+priorityClass+'"></div>');
+
+      let front = $('<div class="task-front">'+ task.text +'</div>');
+      let back = $('<div class="task-back">Completed 🎉</div>');
+      inner.append(front).append(back);
+
+      let delBtn = $('<button class="deleteBtn">Delete</button>');
+
+      inner.append(delBtn);
+      li.append(inner);
+
+      if(task.done){
+        $("#completedList").append(li);
+      } else {
+        $("#taskList").append(li);
+      }
+
+      // Flip on click
+      inner.click(function(e){
+        if($(e.target).hasClass("deleteBtn")) return; // skip delete
+        task.done = !task.done;
+        updateLocalStorage();
+        renderTasks();
+      });
+
+      // Delete button
+      delBtn.click(function(){
+        tasks.splice(index, 1);
+        updateLocalStorage();
+        renderTasks();
+      });
+    });
+
+    updateProgress();
+  }
+
+  $("#addTaskBtn").click(function(){
+    let text = $("#taskInput").val().trim();
+    let priority = $("#priority").val();
+    if(text){
+      tasks.push({ text: text, priority: priority, done: false });
+      $("#taskInput").val("");
+      updateLocalStorage();
+      renderTasks();
+    }
+  });
+
+  $("#taskInput").keypress(function(e){
+    if(e.which === 13) $("#addTaskBtn").click();
+  });
+
+  renderTasks();
+
+});
+</script>
+
+</body>
+</html>

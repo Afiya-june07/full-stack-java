@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Joke Generator</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+  }
+  .container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+    width: 400px;
+    text-align: center;
+  }
+  .joke-card {
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px 0;
+    color: #fff;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: all 0.5s ease;
+    opacity: 0;
+  }
+  button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+    font-weight: bold;
+    background: #007BFF;
+    color: white;
+    transition: 0.3s;
+  }
+  button:hover { background: #0056b3; }
+  #history {
+    text-align: left;
+    max-height: 150px;
+    overflow-y: auto;
+    margin-top: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+  #history li { margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>😂 Animated Joke Generator</h2>
+  <div class="joke-card" id="joke">Click "Next Joke"!</div>
+  <button id="nextJokeBtn">Next Joke</button>
+
+  <h3>Joke History:</h3>
+  <ul id="history"></ul>
+</div>
+
+<script>
+$(document).ready(function(){
+  const jokes = [
+    "Why don’t skeletons fight each other? They don’t have the guts!",
+    "Why did the scarecrow win an award? Because he was outstanding in his field!",
+    "Why can’t your nose be 12 inches long? Because then it would be a foot!",
+    "What do you call fake spaghetti? An impasta!",
+    "Why did the math book look sad? Because it had too many problems.",
+    "Why did the bicycle fall over? It was two-tired!",
+    "I would tell you a joke about construction, but I’m still working on it."
+  ];
+
+  const colors = ["#FF6B6B","#6BCB77","#4D96FF","#FFD93D","#FF6EC7","#6E44FF","#FFA500"];
+  let usedIndexes = [];
+
+  function showNextJoke() {
+    if(usedIndexes.length === jokes.length) usedIndexes = []; // Reset after all jokes shown
+
+    let index;
+    do {
+      index = Math.floor(Math.random() * jokes.length);
+    } while(usedIndexes.includes(index));
+
+    usedIndexes.push(index);
+    const joke = jokes[index];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    // Animate joke card
+    $("#joke").css({opacity:0, background: color}).text(joke).animate({opacity:1}, 500);
+
+    // Add to history
+    $("#history").prepend("<li>" + joke + "</li>");
+  }
+
+  $("#nextJokeBtn").click(showNextJoke);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do List with Work Done</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: url("https://images.unsplash.com/photo-1508780709619-79562169bc64") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    min-height: 100vh;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 20px;
+    width: 500px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    text-align: center;
+  }
+
+  h2 { margin-bottom: 20px; color: #333; }
+
+  input[type="text"] {
+    width: 65%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-right: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+  }
+  input[type="text"]:focus {
+    border-color: #268b7c;
+    box-shadow: 0 0 8px rgba(255,107,107,0.3);
+  }
+
+  button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background: #FF6B6B;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  button:hover { 
+    background: #FF3B3B;
+    transform: scale(1.05);
+  }
+
+  ul { 
+    list-style: none; 
+    padding: 0; 
+    margin-top: 20px; 
+  }
+
+  li {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    color: #fff;
+    transition: all 0.3s;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 5px;
+  }
+
+  .markDoneBtn {
+    background: #28a745;
+  }
+  .markDoneBtn:hover { background: #1e7e34; }
+
+  .deleteBtn {
+    background: rgba(255,0,0,0.8);
+  }
+  .deleteBtn:hover { background: rgb(187, 115, 115); }
+
+  .doneText {
+    text-decoration: line-through;
+    color: #222;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>✅ To-Do List</h2>
+  <input type="text" id="taskInput" placeholder="Enter new task">
+  <button id="addTaskBtn">Add Task</button>
+  <button id="clearAll">Clear All</button>
+
+  <ul id="taskList"></ul>
+</div>
+
+<script>
+$(document).ready(function(){
+
+  function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for(let i=0; i<6; i++){
+      color += letters[Math.floor(Math.random()*16)];
+    }
+    return color;
+  }
+
+  function addTask() {
+    let task = $("#taskInput").val().trim();
+    if(task !== "") {
+      const color = getRandomColor();
+      $("#taskList").append(
+        '<li style="background:'+ color +'">' +
+          '<span class="taskText">' + task + '</span>' +
+          '<div class="btn-group">' +
+            '<button class="markDoneBtn">Mark Done</button>' +
+            '<button class="deleteBtn">Delete</button>' +
+          '</div>' +
+        '</li>'
+      );
+      $("#taskInput").val('');
+    }
+  }
+
+  $("#addTaskBtn").click(addTask);
+
+  $("#taskInput").keypress(function(e){
+    if(e.which === 13) addTask();
+  });
+
+  // Mark as Done Button
+  $("#taskList").on("click", ".markDoneBtn", function(){
+    let taskText = $(this).closest("li").find(".taskText");
+    taskText.addClass("doneText").text(taskText.text() + " ✅ Work Done");
+    $(this).closest("li").fadeOut(1000, function(){ $(this).remove(); });
+  });
+
+  // Delete task
+  $("#taskList").on("click", ".deleteBtn", function(){
+    $(this).closest("li").remove();
+  });
+
+  // Clear all tasks
+  $("#clearAll").click(function(){
+    $("#taskList").empty();
+  });
+
+});
+</script>
+
+</body>
+</html>
